@@ -10,34 +10,45 @@
 </head>
 <body>
 
+    <!-- Snowfall Container -->
+    <div id="snowflakes" aria-hidden="true"></div>
+
     <header>
         <div class="header-content">
-            <div class="bot-icon">👑</div>
+            <img src="images/gloria_avatar.jpg" alt="Gloria Bot" class="bot-icon">
             <h1>Gloria</h1>
             <p>A self-written bot for the Discord server of fucking scum, created out of boredom and curiosity >:3</p>
         </div>
     </header>
 
     <main>
-        <!-- For Everyone Commands -->
+        <!-- For Everyone Commands (Alphabetically Sorted) -->
         <section class="category">
             <h2 class="category-title">For Everyone</h2>
             <div class="commands-grid">
                 
                 <div class="command-card">
-                    <div class="command-name">/customize name</div>
+                    <div class="command-name">/checkid</div>
                     <div class="command-desc">
-                        Changes the name of the server. Regular users are subject to a cooldown after using this command.<br><br>
-                        <strong>Parameters:</strong> <code>text</code> (string) - The new name for the server.
+                        Retrieves and displays a paginated list of all server categories, text channels, and voice channels alongside their respective IDs.
                     </div>
-                    <div class="command-usage">Usage: <span>/customize name text:My Awesome Server</span></div>
+                    <div class="command-usage">Usage: <span>/checkid</span></div>
+                </div>
+
+                <div class="command-card">
+                    <div class="command-name">/cooldown</div>
+                    <div class="command-desc">
+                        Displays the remaining cooldown timers for a user's customization commands. If no user is specified, it checks the command executor.<br><br>
+                        <strong>Parameters:</strong> <code>user</code> (User, optional) - The target user to check.
+                    </div>
+                    <div class="command-usage">Usage: <span>/cooldown OR /cooldown user:@username</span></div>
                 </div>
 
                 <div class="command-card">
                     <div class="command-name">/customize avatar</div>
                     <div class="command-desc">
-                        Changes the server's avatar. It displays only the new avatar upon success. Regular users are subject to a cooldown.<br><br>
-                        <strong>Parameters:</strong> <code>text</code> (string, optional) - Direct URL, OR <code>image</code> (attachment, optional) - Uploaded file. (Must provide one).
+                        Updates the server's avatar. A cooldown applies to non-owner users. Requires either an image URL or an attached image file.<br><br>
+                        <strong>Parameters:</strong> <code>text</code> (string, optional) - Direct image URL, or <code>image</code> (attachment, optional) - Uploaded image file.
                     </div>
                     <div class="command-usage">Usage: <span>/customize avatar text:https://... OR image:[file]</span></div>
                 </div>
@@ -45,41 +56,41 @@
                 <div class="command-card">
                     <div class="command-name">/customize channel</div>
                     <div class="command-desc">
-                        Renames a specific text channel. Regular users are subject to a cooldown.<br><br>
-                        <strong>Parameters:</strong> <code>channel</code> (TextChannel), <code>text</code> (string) - The new name.
+                        Renames a specified text channel. A cooldown applies to non-owner users.<br><br>
+                        <strong>Parameters:</strong> <code>channel</code> (TextChannel) - The target channel, <code>text</code> (string) - The new channel name.
                     </div>
                     <div class="command-usage">Usage: <span>/customize channel channel:#general text:new-name</span></div>
                 </div>
 
                 <div class="command-card">
+                    <div class="command-name">/customize name</div>
+                    <div class="command-desc">
+                        Updates the server's name. A cooldown applies to non-owner users to prevent spam.<br><br>
+                        <strong>Parameters:</strong> <code>text</code> (string) - The new server name.
+                    </div>
+                    <div class="command-usage">Usage: <span>/customize name text:My Awesome Server</span></div>
+                </div>
+
+                <div class="command-card">
+                    <div class="command-name">/help</div>
+                    <div class="command-desc">
+                        Provides a link to the official Gloria bot website for detailed documentation and command references.
+                    </div>
+                    <div class="command-usage">Usage: <span>/help</span></div>
+                </div>
+
+                <div class="command-card">
                     <div class="command-name">/serverinfo</div>
                     <div class="command-desc">
-                        Displays detailed information about the server, including its name, ID, member count, creation date, owner, and the current active status of the Anarchy mode.
+                        Displays comprehensive server information, including name, ID, member count, creation date, owner, and the current status of Anarchy mode.
                     </div>
                     <div class="command-usage">Usage: <span>/serverinfo</span></div>
-                </div>
-
-                <div class="command-card">
-                    <div class="command-name">/cooldown</div>
-                    <div class="command-desc">
-                        Displays the current cooldown timers for a user's customization actions. If the target user is the owner, it displays a special status indicating they have no cooldowns.<br><br>
-                        <strong>Parameters:</strong> <code>user</code> (User, optional)
-                    </div>
-                    <div class="command-usage">Usage: <span>/cooldown OR /cooldown user:@username</span></div>
-                </div>
-
-                <div class="command-card">
-                    <div class="command-name">/checkid</div>
-                    <div class="command-desc">
-                        Fetches and displays a paginated list of all categories, text channels, and voice channels on the server, along with their corresponding IDs. Useful for finding the correct channel ID.
-                    </div>
-                    <div class="command-usage">Usage: <span>/checkid</span></div>
                 </div>
 
             </div>
         </section>
 
-        <!-- For the Owner Commands -->
+        <!-- For the Owner Commands (Alphabetically Sorted) -->
         <section class="category">
             <h2 class="category-title">For the Owner</h2>
             <div class="commands-grid">
@@ -87,8 +98,8 @@
                 <div class="command-card">
                     <div class="command-name">/anarchy</div>
                     <div class="command-desc">
-                        Toggles "Anarchy" mode. When enabled, all cooldowns are completely bypassed for regular users. The owner is always immune to cooldowns regardless of this setting.<br><br>
-                        <strong>Parameters:</strong> <code>status</code> (boolean) - True to enable, False to disable.
+                        Toggles "Anarchy" mode. When enabled, customization command cooldowns are bypassed for all users.<br><br>
+                        <strong>Parameters:</strong> <code>status</code> (boolean) - <code>True</code> to enable, <code>False</code> to disable.
                     </div>
                     <div class="command-usage">Usage: <span>/anarchy status:True</span></div>
                 </div>
@@ -96,32 +107,33 @@
                 <div class="command-card">
                     <div class="command-name">/clear</div>
                     <div class="command-desc">
-                        Purges (deletes) a specified number of recent messages in the current channel. (Note: The user executing this must also have the "Manage Messages" Discord permission).<br><br>
-                        <strong>Parameters:</strong> <code>number</code> (integer, 1-100)
+                        Purges a specified number of recent messages in the current channel. Requires the "Manage Messages" permission.<br><br>
+                        <strong>Parameters:</strong> <code>number</code> (integer, 1-100) - The amount of messages to delete.
                     </div>
                     <div class="command-usage">Usage: <span>/clear number:50</span></div>
                 </div>
 
                 <div class="command-card">
-                    <div class="command-name">/reset_cooldown</div>
+                    <div class="command-name">/database</div>
                     <div class="command-desc">
-                        Instantly resets all cooldown timers (name, avatar, channel) for the specified user back to zero, allowing them to use customization commands immediately.<br><br>
-                        <strong>Parameters:</strong> <code>user</code> (User)
+                        Generates and sends a backup of the cooldown database file directly to the bot owner via Direct Message.
                     </div>
-                    <div class="command-usage">Usage: <span>/reset_cooldown user:@username</span></div>
+                    <div class="command-usage">Usage: <span>/database</span></div>
                 </div>
 
                 <div class="command-card">
-                    <div class="command-name">/database</div>
+                    <div class="command-name">/reset_cooldown</div>
                     <div class="command-desc">
-                        Generates and sends a backup copy of the cooldown database file directly to the owner's Direct Messages.
+                        Instantly clears all customization command cooldowns for the specified user.<br><br>
+                        <strong>Parameters:</strong> <code>user</code> (User) - The target user whose cooldowns will be reset.
                     </div>
-                    <div class="command-usage">Usage: <span>/database</span></div>
+                    <div class="command-usage">Usage: <span>/reset_cooldown user:@username</span></div>
                 </div>
 
             </div>
         </section>
     </main>
 
+    <script src="js/snowfall.js"></script>
 </body>
 </html>
