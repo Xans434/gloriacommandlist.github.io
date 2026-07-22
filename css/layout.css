@@ -1,0 +1,114 @@
+/* --- CSS Variables & Reset --- */
+:root {
+    /* Black & Purple Theme */
+    --bg-primary: #050505;       /* Deepest black */
+    --bg-secondary: #121212;     /* Dark gray for cards */
+    --bg-tertiary: #000000;      /* Pure black for header/footer */
+    
+    --text-primary: #f4f4f5;     /* Off-white */
+    --text-secondary: #a1a1aa;   /* Muted gray */
+    --text-muted: #71717a;       /* Darker muted gray */
+    
+    --accent: #9d4edd;           /* Vibrant purple */
+    --accent-light: #c77dff;     /* Lighter purple for hovers */
+    --accent-glow: rgba(157, 78, 221, 0.4); /* Purple glow effect */
+    
+    --border: #27272a;           /* Subtle dark border */
+    
+    --font-main: 'Inter', 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --font-code: 'Fira Code', 'Consolas', 'Monaco', 'Courier New', monospace;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    color: var(--accent-light);
+    text-decoration: none;
+    transition: color 0.2s, text-shadow 0.2s;
+}
+
+a:hover {
+    color: #ffffff;
+    text-shadow: 0 0 8px var(--accent-glow);
+}
+
+/* --- Header --- */
+header {
+    background-color: var(--bg-tertiary);
+    padding: 4rem 1rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    /* Subtle purple gradient glow at the top */
+    background-image: radial-gradient(circle at 50% 0%, rgba(157, 78, 221, 0.15) 0%, transparent 60%), var(--bg-tertiary);
+}
+
+.header-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.bot-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+    filter: drop-shadow(0 0 10px var(--accent-glow));
+}
+
+header h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, #ffffff 0%, var(--accent-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+header p {
+    color: var(--text-secondary);
+    font-size: 1.15rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* --- Main Content --- */
+main {
+    flex: 1;
+    max-width: 1100px;
+    width: 100%;
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--bg-tertiary);
+    text-align: center;
+    padding: 2.5rem 1rem;
+    margin-top: auto;
+    border-top: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+footer .footer-links {
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+}

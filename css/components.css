@@ -1,0 +1,126 @@
+/* --- Command Categories --- */
+.category {
+    margin-bottom: 3.5rem;
+}
+
+.category-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--accent);
+    display: inline-block;
+    color: var(--text-primary);
+    box-shadow: 0 2px 4px var(--accent-glow);
+}
+
+/* --- Grid Layout --- */
+.commands-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+/* --- Command Cards --- */
+.command-card {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                border-color 0.3s, 
+                box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Purple glow effect on hover */
+.command-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.command-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 
+                0 0 15px var(--accent-glow);
+}
+
+.command-card:hover::before {
+    opacity: 1;
+}
+
+.command-name {
+    font-family: var(--font-code);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--accent-light);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.command-desc {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+    line-height: 1.5;
+}
+
+.command-usage {
+    background-color: var(--bg-tertiary);
+    padding: 0.6rem 0.85rem;
+    border-radius: 6px;
+    font-family: var(--font-code);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    border-left: 3px solid var(--accent);
+}
+
+.command-usage span {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.2rem;
+    }
+    
+    header {
+        padding: 3rem 1rem;
+    }
+
+    .commands-grid {
+        grid-template-columns: 1fr;
+    }
+
+    footer .footer-links {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .category-title {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .command-card {
+        padding: 1.25rem;
+    }
+    
+    .command-name {
+        font-size: 1.1rem;
+    }
+}
